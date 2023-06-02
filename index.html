@@ -10,22 +10,7 @@
         height: 100vh;
         font-size: 5em;
         font-family: Arial, sans-serif;
-      }
-      
-      .red {
-        color: red;
-      }
-      
-      .yellow {
-        color: yellow;
-      }
-      
-      .green {
-        color: green;
-      }
-      
-      .golden {
-        color: goldenrod;
+        color: #333;
       }
     </style>
   </head>
@@ -35,35 +20,21 @@
     </div>
 
     <script>
-      // JavaScript logic to update the number of days passed in Pakistan time
+      // JavaScript logic to update the number of 24-hour periods passed in Pakistan time
       function updateDaysCounter() {
         var startDate = new Date("June 1, 2023 01:00:00 GMT+0500"); // Set start date to 1 am of 1 June 2023 in Pakistan time
         var today = new Date();
         var pakistanTimeDiff = today.getTime() + (5 * 60 * 60 * 1000); // Adding 5 hours to convert to Pakistan time
         var timeDiff = Math.abs(pakistanTimeDiff - startDate.getTime());
-        var daysPassed = Math.ceil(timeDiff / (1000 * 3600 * 24));
+        var daysPassed = Math.floor(timeDiff / (1000 * 3600 * 24));
 
-        var counterElement = document.getElementById("days-counter");
-        counterElement.textContent = daysPassed;
-
-        if (daysPassed < 5) {
-          counterElement.classList.add("red");
-        } else if (daysPassed >= 5 && daysPassed <= 15) {
-          counterElement.classList.remove("red");
-          counterElement.classList.add("yellow");
-        } else if (daysPassed > 15 && daysPassed <= 50) {
-          counterElement.classList.remove("yellow");
-          counterElement.classList.add("green");
-        } else {
-          counterElement.classList.remove("green");
-          counterElement.classList.add("golden");
-        }
+        document.getElementById("days-counter").textContent = daysPassed;
       }
 
       // Call the function initially to set the value
       updateDaysCounter();
 
-      // Update the number of days every second (you can change the interval if needed)
+      // Update the number of 24-hour periods every second (you can change the interval if needed)
       setInterval(updateDaysCounter, 1000);
     </script>
   </body>
