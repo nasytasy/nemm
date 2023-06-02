@@ -20,11 +20,12 @@
     </div>
 
     <script>
-      // JavaScript logic to update the number of days passed
+      // JavaScript logic to update the number of days passed in Pakistan time
       function updateDaysCounter() {
         var startDate = new Date("June 1, 2023");
         var today = new Date();
-        var timeDiff = Math.abs(today.getTime() - startDate.getTime());
+        var pakistanTimeDiff = today.getTime() + (5 * 60 * 60 * 1000); // Adding 5 hours to convert to Pakistan time
+        var timeDiff = Math.abs(pakistanTimeDiff - startDate.getTime());
         var daysPassed = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
         document.getElementById("days-counter").textContent = daysPassed;
