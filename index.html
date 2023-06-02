@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      /* CSS styles for the number display */
+      .number-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-size: 5em;
+        font-family: Arial, sans-serif;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="number-container">
+      <span id="days-counter">0</span>
+    </div>
+
+    <script>
+      // JavaScript logic to update the number of days passed
+      function updateDaysCounter() {
+        var startDate = new Date("June 1, 2023");
+        var today = new Date();
+        var timeDiff = Math.abs(today.getTime() - startDate.getTime());
+        var daysPassed = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+        document.getElementById("days-counter").textContent = daysPassed;
+      }
+
+      // Call the function initially to set the value
+      updateDaysCounter();
+
+      // Update the number of days every second (you can change the interval if needed)
+      setInterval(updateDaysCounter, 1000);
+    </script>
+  </body>
+</html>
