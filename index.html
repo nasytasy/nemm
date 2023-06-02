@@ -10,7 +10,22 @@
         height: 100vh;
         font-size: 5em;
         font-family: Arial, sans-serif;
-        color: #333;
+      }
+
+      .number-red {
+        color: red;
+      }
+
+      .number-yellow {
+        color: yellow;
+      }
+
+      .number-green {
+        color: green;
+      }
+
+      .number-purple {
+        color: purple;
       }
     </style>
   </head>
@@ -20,22 +35,32 @@
     </div>
 
     <script>
-      // JavaScript logic to update the number of 24-hour periods passed in Pakistan time
-      function updateDaysCounter() {
-        var startDate = new Date("June 1, 2023 01:00:00 GMT+0500"); // Set start date to 1 am of 1 June 2023 in Pakistan time
-        var today = new Date();
-        var pakistanTimeDiff = today.getTime() + (5 * 60 * 60 * 1000); // Adding 5 hours to convert to Pakistan time
-        var timeDiff = Math.abs(pakistanTimeDiff - startDate.getTime());
-        var daysPassed = Math.floor(timeDiff / (1000 * 3600 * 24));
+      // Set the target date and time (1 am on 1 June 2023 GMT+5)
+      var targetDate = new Date("June 1, 2023 01:00:00 GMT+0500");
 
-        document.getElementById("days-counter").textContent = daysPassed;
+      // Get the current date and time
+      var currentDate = new Date();
+
+      // Calculate the time difference in milliseconds
+      var timeDiff = currentDate.getTime() - targetDate.getTime();
+
+      // Calculate the number of days passed by dividing the time difference by the number of milliseconds in a day
+      var daysPassed = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+
+      // Update the number of days in the HTML
+      var daysCounter = document.getElementById("days-counter");
+      daysCounter.textContent = daysPassed;
+
+      // Apply different CSS classes based on the value of daysPassed
+      if (daysPassed < 5) {
+        daysCounter.classList.add("number-red");
+      } else if (daysPassed >= 5 && daysPassed <= 14) {
+        daysCounter.classList.add("number-yellow");
+      } else if (daysPassed === 15) {
+        daysCounter.classList.add("number-green");
+      } else if (daysPassed >= 50) {
+        daysCounter.classList.add("number-purple");
       }
-
-      // Call the function initially to set the value
-      updateDaysCounter();
-
-      // Update the number of 24-hour periods every second (you can change the interval if needed)
-      setInterval(updateDaysCounter, 1000);
     </script>
   </body>
 </html>
