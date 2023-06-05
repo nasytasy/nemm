@@ -47,9 +47,16 @@
       // Calculate the number of days passed by dividing the time difference by the number of milliseconds in a day
       var daysPassed = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
 
-      // Update the number of days in the HTML
+      // Calculate the number of hours passed
+      var hoursPassed = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+      // Update the number of days and hours in the HTML
       var daysCounter = document.getElementById("days-counter");
-      daysCounter.textContent = daysPassed;
+      if (daysPassed < 1) {
+        daysCounter.textContent = hoursPassed + " hours";
+      } else {
+        daysCounter.textContent = daysPassed + " days";
+      }
 
       // Apply different CSS classes based on the value of daysPassed
       if (daysPassed < 5) {
