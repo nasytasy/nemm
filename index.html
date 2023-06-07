@@ -27,11 +27,32 @@
       .number-purple {
         color: purple;
       }
+      
+      .button-link {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .button-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 5em;
+        font-family: Arial, sans-serif;
+      }
     </style>
   </head>
   <body>
     <div class="number-container">
-      <span id="days-counter">0</span>
+      <a href="input.html" class="button-link">
+        <span id="days-counter" class="button">0</span>
+      </a>
     </div>
 
     <script>
@@ -55,7 +76,7 @@
       if (daysPassed < 1) {
         daysCounter.textContent = hoursPassed + "h";
       } else {
-        daysCounter.textContent =daysPassed ;
+        daysCounter.textContent = daysPassed;
       }
 
       // Apply different CSS classes based on the value of daysPassed
