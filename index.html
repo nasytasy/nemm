@@ -10,85 +10,31 @@
         height: 100vh;
         font-size: 5em;
         font-family: Arial, sans-serif;
-      }
-
-      .number-red {
-        color: red;
-      }
-
-      .number-yellow {
-        color: yellow;
-      }
-
-      .number-green {
-        color: green;
-      }
-
-      .number-purple {
-        color: purple;
-      }
-      
-      .button-link {
-        text-decoration: none;
-        color: inherit;
-      }
-
-      .button-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .button {
-        background: none;
-        border: none;
-        cursor: pointer;
-        font-size: 1em;
-        font-family: Arial, sans-serif;
+        color: #333;
       }
     </style>
   </head>
   <body>
     <div class="number-container">
-      <a href="input.html" class="button-link">
-        <span id="days-counter" class="button">0</span>
-      </a>
+      <span id="days-counter">0</span>
     </div>
 
     <script>
-      // Set the target date and time (1 am on 1 June 2023 GMT+5)
-      var targetDate = new Date("June 8, 2023 23:30:00 GMT+0500");
+      // JavaScript logic to update the number of days passed
+      function updateDaysCounter() {
+        var startDate = new Date("June 1, 2023");
+        var today = new Date();
+        var timeDiff = Math.abs(today.getTime() - startDate.getTime());
+        var daysPassed = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
-      // Get the current date and time
-      var currentDate = new Date();
-
-      // Calculate the time difference in milliseconds
-      var timeDiff = currentDate.getTime() - targetDate.getTime();
-
-      // Calculate the number of days passed by dividing the time difference by the number of milliseconds in a day
-      var daysPassed = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-
-      // Calculate the number of hours passed
-      var hoursPassed = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-
-      // Update the number of days and hours in the HTML
-      var daysCounter = document.getElementById("days-counter");
-      if (daysPassed < 1) {
-        daysCounter.textContent = hoursPassed + "h";
-      } else {
-        daysCounter.textContent = daysPassed;
+        document.getElementById("days-counter").textContent = daysPassed;
       }
 
-      // Apply different CSS classes based on the value of daysPassed
-      if (daysPassed < 5) {
-        daysCounter.classList.add("number-red");
-      } else if (daysPassed >= 5 && daysPassed <= 14) {
-        daysCounter.classList.add("number-yellow");
-      } else if (daysPassed === 15) {
-        daysCounter.classList.add("number-green");
-      } else if (daysPassed >= 50) {
-        daysCounter.classList.add("number-purple");
-      }
+      // Call the function initially to set the value
+      updateDaysCounter();
+
+      // Update the number of days every second (you can change the interval if needed)
+      setInterval(updateDaysCounter, 1000);
     </script>
   </body>
 </html>
