@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Val</title>
+    <style>
+        body {
+            background-color: #ed145b;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            transition: background-image 0.5s ease;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .heart-button {
+            width: 150px;
+            height: 50px;
+            background-color: #ff5252;
+            border: none;
+            border-radius: 15px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            display: inline-block;
+            text-decoration: none; /* Added to remove default underline */
+            color: white; /* Added to change button text color */
+            line-height: 50px; /* Added to center button text vertically */
+        }
+
+        .heart-button:hover {
+            transform: scale(1.2) rotate(-45deg);
+        }
+
+        h1 {
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+            color: purple;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Are you lonely this Valentines?</h1>
+    <div class="button-container">
+        <a href="Untitled-3.html" class="heart-button" onmouseenter="changeBackground()">Yes</a>
+        <a href="Untitled-4.html" class="heart-button" onclick="resetBackground()">No</a>
+    </div>
+
+    <script>
+        function changeBackground() {
+            document.body.style.backgroundImage = "url('https://cdn.pixabay.com/photo/2015/09/13/03/43/hearts-937668_1280.jpg')";
+            document.body.style.backgroundSize = "cover";
+            document.body.style.backgroundRepeat = "no-repeat";
+            document.body.style.backgroundPosition = "center";
+        }
+
+        function resetBackground() {
+            document.body.style.backgroundImage = "none";
+        }
+    </script>
+</body>
+</html>
